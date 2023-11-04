@@ -25,7 +25,6 @@
 
 <div *ngIf="showUpdateForm">
   <h3>Update Cryptocurrency</h3>
-  <p>Selected Currency: {{ updatedCryptocurrency | json }}</p>
   <input [(ngModel)]="updatedCryptocurrency.name" placeholder="Name">
   <input [(ngModel)]="updatedCryptocurrency.ticker" placeholder="Ticker">
   <input [(ngModel)]="updatedCryptocurrency.coins" placeholder="Coins">
