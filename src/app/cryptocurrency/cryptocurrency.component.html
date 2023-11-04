@@ -1,0 +1,44 @@
+<h2>Cryptocurrency Management</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Ticker</th>
+      <th>Coins</th>
+      <th>Market Cap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currency of cryptocurrencies">
+      <td>{{ currency.name }}</td>
+      <td>{{ currency.ticker }}</td>
+      <td>{{ currency.coins }}</td>
+      <td>{{ currency.market }}</td>
+      <td>
+        <button (click)="toggleUpdateForm(currency)">Update</button>
+        <button (click)="deleteCryptocurrency(currency.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showUpdateForm">
+  <h3>Update Cryptocurrency</h3>
+  <p>Selected Currency: {{ updatedCryptocurrency | json }}</p>
+  <input [(ngModel)]="updatedCryptocurrency.name" placeholder="Name">
+  <input [(ngModel)]="updatedCryptocurrency.ticker" placeholder="Ticker">
+  <input [(ngModel)]="updatedCryptocurrency.coins" placeholder="Coins">
+  <input [(ngModel)]="updatedCryptocurrency.market" placeholder="Market Cap">
+  <button (click)="updateCryptocurrency(updatedCryptocurrency.id)">Save</button>
+  <button (click)="cancelUpdate()">Cancel</button>
+</div>
+
+<div>
+  <h3>Add New Cryptocurrency</h3>
+  <input [(ngModel)]="newCryptocurrency.name" placeholder="Name">
+  <input [(ngModel)]="newCryptocurrency.ticker" placeholder="Ticker">
+  <input [(ngModel)]="newCryptocurrency.coins" placeholder="Coins">
+  <input [(ngModel)]="newCryptocurrency.market" placeholder="Market Cap">
+  <button (click)="createCryptocurrency()">Add</button>
+</div>
